@@ -10,9 +10,7 @@ def remove(nums) -> int:
                 index_first_duplicated = nums.index(nums[num])+2 #al encontrar el primer elemento que se repita tres veces o mas, lo que hago es que a la posicion del primer elemento le sumo 2, lo que me daria la posicion del tercero independientemente de cuantos mas haya
             nums.pop(nums.index(nums[num])) #elimino los primeros elementos duplicados que encuentre, asi no tengo que recorrer el arreglo para eliminar de atras hacia delante
             value = num #almaceno en value el valor duplicado
-            print(value,num)
         while len(nums) < lenght: #debido a que estoy eliminando elementos, me queda un array con menor tamaño, lo que hago es que mientras el arreglo sin duplicados tenga un menor tamaño respecto al original, le introduzco los valores duplicados al final
-            print(value)
             nums.append(value)
     return index_first_duplicated,nums
 
