@@ -1,18 +1,19 @@
-nums = [1, 1, 1, 2, 2, 2, 3, 5, 5, 5]
+nums = [1, 1,2, 2, 2,2,2,2,2, 3, 5, 5, 5,9,9,9,11,11,11]
 
 def remove(nums) -> int:
-    lenght=len(nums)
-    value=int()
-    index_first_duplicated = 0
-    for num in range(len(nums)):
-        if nums.count(num) > 2:
-            nums.pop(nums.index(nums[num]))
-            value = nums[num]
-            if index_first_duplicated != 0:
-                continue
-            index_first_duplicated = nums.index(nums[num+2])
-        if len(nums) < lenght:
+    lenght=len(nums) # primero guardo en una variable la longitud original del array
+    value=int() # declaro esta variable que representara los valores duplicados del array que quiero agregar al final
+    index_first_duplicated = 0 # esta variable me servira para almacenar el indice del primer duplicado
+    for num in range(len(nums)): #hago el ciclo for con el range para que me de la posicion que a su vez puede ser usada como los mismos valores del array.
+        while nums.count(num) > 2 :#valido que hayan mas de dos elementos iguales dentro del array, uso while porque debo quitar todos los elementos repetidos hasta que me queden 2
+            if index_first_duplicated == 0:
+                index_first_duplicated = nums.index(nums[num])+2 #al encontrar el primer elemento que se repita tres veces o mas, lo que hago es que a la posicion del primer elemento le sumo 2, lo que me daria la posicion del tercero independientemente de cuantos mas haya
+            nums.pop(nums.index(nums[num])) #elimino los primeros elementos duplicados que encuentre, asi no tengo que recorrer el arreglo para eliminar de atras hacia delante
+            value = num #almaceno en value el valor duplicado
+            print(value,num)
+        while len(nums) < lenght: #debido a que estoy eliminando elementos, me queda un array con menor tamaño, lo que hago es que mientras el arreglo sin duplicados tenga un menor tamaño respecto al original, le introduzco los valores duplicados al final
+            print(value)
             nums.append(value)
-    return index_first_duplicated
+    return index_first_duplicated,nums
 
 print(remove(nums))
