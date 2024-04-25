@@ -1,4 +1,4 @@
-nums = [1, 5, 5, 5,9,9,9,11,11,11]
+nums = [1, 2, 2, 2, 2, 3, 3, 3, 4, 5, 5, 6]
 
 def remove(nums) -> int:
     lenght=len(nums) # primero guardo en una variable la longitud original del array
@@ -10,7 +10,7 @@ def remove(nums) -> int:
             if index_first_duplicated == 0:
                 index_first_duplicated = nums.index(nums[num])+2 #al encontrar el primer elemento que se repita tres veces o mas, lo que hago es que a la posicion del primer elemento le sumo 2, lo que me daria la posicion del tercero independientemente de cuantos mas haya
             nums.pop(nums.index(num)) #elimino los primeros elementos duplicados que encuentre, asi no tengo que recorrer el arreglo para eliminar de atras hacia delante
-            value = num #almaceno en value el valor duplicado
+            value = nums[num] #almaceno en value el valor duplicado
         while len(nums) < lenght: #debido a que estoy eliminando elementos, me queda un array con menor tamaño, lo que hago es que mientras el arreglo sin duplicados tenga un menor tamaño respecto al original, le introduzco los valores duplicados al final
             nums.append(value)
         continue
